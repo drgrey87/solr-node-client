@@ -13,7 +13,7 @@ client.autoCommit = true;
 
 var doc = {
      id : 12357,
-     title_t : "Original Title"
+     title_t : "Original Title",
      small_l : 12,
      description_t : "Some Description"
  }

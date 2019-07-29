@@ -8,8 +8,7 @@ var mocha = require('mocha'),
 	libPath = process.env['SOLR_CLIENT_COV'] ? '../lib-cov' : '../lib',
 	solr = require( libPath + '/solr'),
 	SolrError = require(libPath + '/error/solr-error'),
-	sassert = require('./sassert'),
-	versionUtils = require('./../lib/utils/version');
+	sassert = require('./sassert');
 
 //TODO support all stuff describe there
 // http://wiki.apache.org/solr/SimpleFacetParameters#Retrieve_docs_with_facets_missing
@@ -79,13 +78,11 @@ describe('Client#createQuery()',function(){
 					"facet.query": "query",
 					"facet.sort": "field desc"
 				};
-				if(client.options.solrVersion && versionUtils.version(client.options.solrVersion) >= versionUtils.Solr4_0) {
-					validationJSON["facet.pivot.mincount"] = "10";
-					validationJSON["facet.pivot"] = [
-						"cat",
-						"popularity"
-					];
-				}
+				validationJSON["facet.pivot.mincount"] = "10";
+				validationJSON["facet.pivot"] = [
+					"cat",
+					"popularity"
+				];
 
 				assert.deepEqual(data.responseHeader.params, validationJSON);
 				assert.equal(data.debug.QParser,'LuceneQParser');
@@ -151,10 +148,8 @@ describe('Client#createQuery()',function(){
 					"facet.sort": "field desc"
 				};
 
-				if(client.options.solrVersion && versionUtils.version(client.options.solrVersion) >= versionUtils.Solr4_0) {
-					validationJSON["facet.pivot"] = "cat";
-					validationJSON["facet.pivot.mincount"] = "10";
-				}
+				validationJSON["facet.pivot"] = "cat";
+				validationJSON["facet.pivot.mincount"] = "10";
 
 				assert.deepEqual(data.responseHeader.params, validationJSON);
 				assert.equal(data.debug.QParser,'LuceneQParser');

@@ -6,7 +6,7 @@
   },
   "name": "solr-client",
   "main": "./main",
-  "description": " A Solr client library for indexing, adding, deleting, committing, optimizing and searching documents within an Apache Solr installation (version>=3.2)",
+  "description": " A Solr client library for indexing, adding, deleting, committing, optimizing and searching documents within an Apache Solr installation (version>=6.0.0)",
   "version": "0.7.0",
   "repository": {
     "type": "git",
