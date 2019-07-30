@@ -74,7 +74,6 @@ describe('Client#createQuery()',function(){
 					"facet.mincount": "10",
 					"facet.missing": "true",
 					"facet.offset": "5",
-					"facet.prefix": "prefix",
 					"facet.query": "query",
 					"facet.sort": "field desc"
 				};
@@ -83,6 +82,7 @@ describe('Client#createQuery()',function(){
 					"cat",
 					"popularity"
 				];
+				validationJSON[`f.${validationJSON['facet.field']}.facet.prefix`] = facetOptions.prefix;
 
 				assert.deepEqual(data.responseHeader.params, validationJSON);
 				assert.equal(data.debug.QParser,'LuceneQParser');
@@ -143,13 +143,13 @@ describe('Client#createQuery()',function(){
 					"facet.mincount": "10",
 					"facet.missing": "true",
 					"facet.offset": "5",
-					"facet.prefix": "prefix",
 					"facet.query": "query",
 					"facet.sort": "field desc"
 				};
 
 				validationJSON["facet.pivot"] = "cat";
 				validationJSON["facet.pivot.mincount"] = "10";
+				validationJSON[`f.${validationJSON['facet.field']}.facet.prefix`] = facetOptions.prefix;
 
 				assert.deepEqual(data.responseHeader.params, validationJSON);
 				assert.equal(data.debug.QParser,'LuceneQParser');

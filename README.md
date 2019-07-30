@@ -189,7 +189,7 @@ Tests are executed against a running SOLR instance, so you might want to:
 - specifiy non-default connection params to your server in test/config.json You can inject these also on the command line through:
 
 ```
-mocha test/*-test.js --client.core=test-node-client --client.port=8080
+mocha test/*-test.js --client.core=solarium --client.port=8983
 ```
 
 ## Test coverage
